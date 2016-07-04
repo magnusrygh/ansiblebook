@@ -8,3 +8,5 @@ run: ansible testallservers -m ping
 run: ansible django -a "date"
 
 run: ansible all -a "date"
+
+ansible-playbook builtinvars.yml -e greeting=hey -e @varfile

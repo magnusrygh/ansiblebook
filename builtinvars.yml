@@ -1,0 +1,11 @@
+- name: built in vars
+  hosts: django
+  tasks:
+  - name: from the command line -e
+    debug: msg={{ greeting }}
+  - name: from a file with @
+    debug: msg={{ a_variable }}
+  - name: built in var
+    debug: var=inventory_hostname
+  - name: gazonk foo
+    debug: msg="hostvars {{ inventory_hostname }}"
