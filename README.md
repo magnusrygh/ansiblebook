@@ -5,7 +5,7 @@ check the SSH port and private_key path by using: |
 
 Update ansible.cfg with ssh_host, ssh_port, and identity file if needed
 
-run: ansible webservers -m ping
+run: ansible vagrant -m ping
 
 run: ansible-playbook playbook.yml
 

@@ -1,4 +1,23 @@
-[webservers]
+[vagrant]
 ansvagrant1 ansible_ssh_host=127.0.0.1 ansible_ssh_port=2202
 ansvagrant2 ansible_ssh_host=127.0.0.1 ansible_ssh_port=2203
-ansvagrant3 ansible_ssh_host=127.0.0.1 ansible_ssh_port=2204 
+ansvagrant3 ansible_ssh_host=127.0.0.1 ansible_ssh_port=2204
+
+[web]
+ansvagrant1
+
+[task]
+ansvagrant2
+
+[rabbitmq]
+ansvagrant3
+
+[db]
+ansvagrant3 
+
+[django:children]
+web
+task
+
+[testallservers]
+ansvagrant[1:3]
