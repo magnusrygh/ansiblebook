@@ -21,3 +21,10 @@ task
 
 [testallservers]
 ansvagrant[1:3]
+
+[db:vars]
+db_user=gazonk
+db_passwd=foo
+
+[all:vars]
+global_stuff=gstuff
