@@ -1,0 +1,15 @@
+- name: show return value of command module
+  hosts: testserver
+  tasks:
+  - name: capture output of id command
+    command: id -un
+    register: login
+  - debug: var=login 
+
+- name: use the information to print just some of the info
+  hosts: testserver
+  tasks:
+  - name: capture id
+    command: id -un
+    register: login2
+  - debug: msg="logged in as user {{ login2.stdout }}"

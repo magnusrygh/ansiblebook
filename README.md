@@ -9,3 +9,4 @@ run: ansible webservers -m ping
 
 run: ansible-playbook playbook.yml
 
+run: ansible testserver -m setup -a 'filter=ansible_python'
