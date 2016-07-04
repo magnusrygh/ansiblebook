@@ -1,2 +1,4 @@
 [webservers]
-testserver ansible_ssh_host=127.0.0.1 ansible_ssh_port=2202 
+ansvagrant1 ansible_ssh_host=127.0.0.1 ansible_ssh_port=2202
+ansvagrant2 ansible_ssh_host=127.0.0.1 ansible_ssh_port=2203
+ansvagrant3 ansible_ssh_host=127.0.0.1 ansible_ssh_port=2204 

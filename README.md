@@ -9,3 +9,4 @@ run: ansible webservers -m ping
 
 run: ansible-playbook playbook.yml
 
+for "fun": ansible all -a "date"
