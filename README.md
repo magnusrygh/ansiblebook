@@ -1,12 +1,10 @@
 Testing Ansible
 ---------------
-check the SSH port and private_key path by using: |
+check the SSH port and private_key path by using: 
  vagrant ssh-config 
 
-Update ansible.cfg with ssh_host, ssh_port, and identity file if needed
+Update ansible.cfg with ssh_host, ssh_port, and identity file if neededjango
+run: ansible testallservers -m ping
+run: ansible django -a "date"
 
-run: ansible vagrant -m ping
-
-run: ansible-playbook playbook.yml
-
-for "fun": ansible all -a "date"
+run: ansible all -a "date"
