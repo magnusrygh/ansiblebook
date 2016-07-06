@@ -1,0 +1,18 @@
+- name: Configure ansvagrant1
+  hosts: ansvagrant1
+  vars:
+    user: "{{ ansible_ssh_user }}"
+    proj_name: mezzanine-example
+    venv_home: "{{ ansible_env.HOME  }}"
+    venv_path: "{{ venv_home  }}/{{ proj_name  }}"
+    proj_dirname: project
+    proj_path: "{{ venv_path  }}/{{ proj_dirname  }}"
+    repo_url: git@github.com:lorin/mezzanine-example.git
+
+  tasks:
+  - name: list keys
+    command: ssh-add
+    register: keystuff
+  - debug: var=keystuff
+  - name: check out repo
+    git: repo={{ repo_url }} dest={{ proj_path }} accept_hostkey=yes

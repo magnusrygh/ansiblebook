@@ -1,0 +1,49 @@
+- name: Configure ansvagrant1
+  hosts: ansvagrant1
+  vars:
+    user: "{{ ansible_ssh_user }}"
+    proj_name: mezzanine-example
+    venv_home: "{{ ansible_env.HOME  }}"
+    venv_path: "{{ venv_home  }}/{{ proj_name  }}"
+    proj_dirname: project
+    proj_path: "{{ venv_path  }}/{{ proj_dirname  }}"
+    reqs_path: requirements.txt
+    manage: "{{ python  }} {{ proj_path  }}/manage.py"
+    live_hostname: 192.168.33.10.xip.io
+    domains:
+      - 192.168.33.10.xip.io
+      - www.192.168.33.19.xip.io
+    repo_url: git@github.com:lorin/mezzanine-example.git
+    gunicorn_port: 8000
+    locale: en_US.UTF-8
+
+    conf_path: /etc/nginx.conf
+    tls_enabled: true
+    python: "{{ venv_path }}/bin/python"
+    database_name: "{{ proj_name }}"
+    database_user: "{{ proj_name }}"
+    database_host: localhost
+    database_port: 5432
+    gunicorn_proc_name: mezzanine
+  vars_files:
+    - secrets.yml
+
+  tasks:
+  - name: Install apt packages
+    apt: pkg={{ item }} update_cache=yes cache_valid_time=3600
+    become: yes
+    become_method: sudo
+    with_items:
+      - git
+      - libjpeg-dev
+      - libpq-dev
+      - memcached
+      - nginx
+      - postgresql
+      - python-dev
+      - python-pip
+      - python-psycopg2
+      - python-setuptools
+      - python-virtualenv
+      - supervisor
+
